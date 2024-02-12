@@ -1,0 +1,116 @@
+.container{
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.container,
+.location{
+    margin: 2% 0 0 2%;
+}
+
+.current, 
+.forecast{
+    padding: 20px 20px 50px 20px;
+    background: radial-gradient(circle, rgb(223, 224, 249) 0%, rgb(155, 198, 235) 66%, rgb(166, 190, 254) 100%);
+    border-radius: 10px;
+}
+
+.current{
+    width: 300px;
+    height: auto;
+}
+
+.header{
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #696774;
+    text-align: center;
+}
+
+h2, p, span {
+    color: #1c1151;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.banner{
+    background-image: url('https://rerouting.ca/wp-content/uploads/2020/12/5.png');
+    height: 250px;
+    text-align: center;
+}
+
+h2{
+    letter-spacing: 1px;
+    line-height: 0;
+}
+
+.info,
+.degrees{
+    color: #1c1151;
+    line-height: 0;
+}
+
+.degrees{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+img{
+    width: 140px;
+    height: auto;
+}
+
+.inline{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.today{
+    padding-top: 30px;
+    text-align: center;
+    color: #1c1151;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
+
+.single-day{
+    display: inline-flex;
+    flex-direction: column;
+    align-items:center;
+    row-gap: 15px;
+    border-right: 1px solid #b6b2cc;
+}
+
+.single-day span{
+    font-size: 20px;
+    font-weight:bold;
+}
+
+input{
+    border: 1px solid #b6b2cc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 20%;
+    margin-right: 10px;
+}
+
+button{
+    color: #fff;
+    background-color: #30217a;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 2px;
+}
+
+button:hover{
+    cursor:pointer;
+    background-color: #5d49c0;
+    transition: 0.5s;
+}
+
+.search-form{
+    position: relative;
+    top: 50%;
+}

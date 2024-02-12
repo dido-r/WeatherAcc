@@ -12,6 +12,6 @@ a{
 }
 
 a:hover{
-    color: rgb(135, 200, 219);
+    color: #696774;
     transition: 0.4s;
 }
