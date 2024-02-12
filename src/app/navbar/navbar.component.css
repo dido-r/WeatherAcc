@@ -1,0 +1,17 @@
+header{
+    background: linear-gradient(180deg, rgb(68, 52, 159) 0%, rgb(43, 19, 116) 50%, rgb(68, 52, 159) 100%);
+    padding: 10px;
+}
+
+a{
+    display: inline;
+    color: #fff;
+    margin-right: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+}
+
+a:hover{
+    color: rgb(135, 200, 219);
+    transition: 0.4s;
+}
