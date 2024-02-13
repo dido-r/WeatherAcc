@@ -11,7 +11,7 @@
 
 .current, 
 .forecast{
-    padding: 20px 20px 50px 20px;
+    padding: 20px 20px 20px 20px;
     background: radial-gradient(circle, rgb(223, 224, 249) 0%, rgb(155, 198, 235) 66%, rgb(166, 190, 254) 100%);
     border-radius: 10px;
 }

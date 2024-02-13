@@ -9,6 +9,7 @@ a{
     margin-right: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     cursor: pointer;
+    text-decoration: none;
 }
 
 a:hover{

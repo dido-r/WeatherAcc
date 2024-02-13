@@ -1,8 +1,8 @@
 footer{
     background: linear-gradient(180deg, rgb(68, 52, 159) 0%, rgb(43, 19, 116) 50%, rgb(68, 52, 159) 100%);
-    padding: 10px;
     color: #fff;
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 20px;
+    padding: 10px 0 10px 0;
+    margin-top: 25px;
 }

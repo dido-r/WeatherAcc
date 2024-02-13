@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink,
+    RouterLinkActive
+  ],
   template: `
     <header>
-      <a>Home</a>
-      <a>Favoutires</a>
+      <a routerLink='home'>Home</a>
+      <a routerLink='favourites'>Favoutires</a>
     </header>
   `,
   styleUrl: './navbar.component.css'
