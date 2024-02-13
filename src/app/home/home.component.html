@@ -11,67 +11,27 @@
             <h2>CURRENT WEATHER</h2>
         </div>
         <div class="inline">
-            <img src="../../assets/icons/01-s.png">
+            <img src="../../assets/icons/{{town.WeatherIcon}}-s.png">
             <div>
-                <p class="degrees">7.2° C</p>
-                <p class="info">Light rain</p>
+                <p class="degrees">{{town.Temperature.Metric.Value}}° C</p>
+                <p class="info">{{town.WeatherText}}</p>
             </div>
         </div>
-        <div class="today">{{"2024-02-12T13:00:00+02:00" | date:'fullDate' }}</div>
+        <div class="today">{{town.LocalObservationDateTime | date:'fullDate' }}</div>
     </div>
     <div class="forecast">
         <div class="header">
             <h2>5-DAY FORECAST</h2>
         </div>
-        <div class="single-day">
-            <p>{{"2024-02-12T13:00:00+02:00" | date }}</p>
+        <div class="single-day" [class.right-border]="i !== (forecast.DailyForecasts.length - 1)" *ngFor="let item of forecast.DailyForecasts; index as i">
+            <p>{{item.Date| date }}</p>
             <div>
-                <img src="../../assets/icons/01-s.png">
+                <img src="../../assets/icons/{{item.Day.Icon}}-s.png">
             </div>
             <div>
-                <span>4°|</span><span>11.2°C</span>
+                <span class="low">{{item.Temperature.Minimum.Value}}</span><span> | </span><span class="high">{{item.Temperature.Maximum.Value}}</span><span>°C</span>
             </div>
-            <p>Showers</p>
-        </div>
-        <div class="single-day">
-            <p>{{"2024-02-12T13:00:00+02:00" | date }}</p>
-            <div>
-                <img src="../../assets/icons/01-s.png">
-            </div>
-            <div>
-                <span>4°|</span><span>11.2°C</span>
-            </div>
-            <p>Showers</p>
-        </div>
-        <div class="single-day">
-            <p>{{"2024-02-12T13:00:00+02:00" | date }}</p>
-            <div>
-                <img src="../../assets/icons/01-s.png">
-            </div>
-            <div>
-                <span>4°|</span><span>11.2°C</span>
-            </div>
-            <p>Showers</p>
-        </div>
-        <div class="single-day">
-            <p>{{"2024-02-12T13:00:00+02:00" | date }}</p>
-            <div>
-                <img src="../../assets/icons/01-s.png">
-            </div>
-            <div>
-                <span>4°|</span><span>11.2°C</span>
-            </div>
-            <p>Showers</p>
-        </div>
-        <div class="single-day">
-            <p>{{"2024-02-12T13:00:00+02:00" | date }}</p>
-            <div>
-                <img src="../../assets/icons/01-s.png">
-            </div>
-            <div>
-                <span>4°|</span><span>11.2°C</span>
-            </div>
-            <p>Showers</p>
-        </div>
+            <p>{{item.Day.IconPhrase}}</p>
+        </div>        
     </div>
 </div>
