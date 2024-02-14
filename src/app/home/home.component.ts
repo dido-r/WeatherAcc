@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RequestService } from '../request.service';
 
 @Component({
     selector: 'app-home',
@@ -10,7 +11,14 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
 
-    town = {
+    constructor(
+        private service: RequestService
+      ) {}
+
+    town = 'Sofia';
+    country = 'Bulgaria';
+
+    current = {
             "LocalObservationDateTime": "2024-02-12T09:58:00+02:00",
             "EpochTime": 1707724680,
             "WeatherText": "Light rain",
@@ -211,5 +219,19 @@ export class HomeComponent {
                     "Link": "http://www.accuweather.com/en/bg/sofia/51097/daily-weather-forecast/51097?day=5&unit=c&lang=en-us"
                 }
             ]
+        }
+
+        async onSubmit(event : Event, location : HTMLInputElement){
+
+            event.preventDefault();
+            let keyResponse = await this.service.getLocationData(location.value);
+            let currentResponse = await this.service.getCurrentCondition(keyResponse[0].Key);
+            let fiveDayResponse = await this.service.getFiveDayForecast(keyResponse[0].Key);
+            let data = keyResponse[0];
+            this.town = data.LocalizedName;
+            this.country = data.Country.LocalizedName;
+            this.current = currentResponse[0];
+            this.forecast = fiveDayResponse;
+            location.value = '';
         }
 }

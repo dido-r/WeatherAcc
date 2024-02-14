@@ -43,3 +43,7 @@ Thumbs.db
 
 # Img files
 *.png
+
+# API Key
+
+**/api.json

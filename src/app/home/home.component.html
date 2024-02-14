@@ -1,23 +1,23 @@
 <div class="banner">
-    <form class="search-form">
-        <input placeholder="Enter a city">
-        <button>Search</button>
+    <form class="search-form" (submit)="onSubmit($event, location)">
+        <input type="text" placeholder="Enter a city" #location>
+        <button type="submit">Search</button>
     </form>
 </div>
-<h2 class="location">Sofia, Bulgaria</h2>
+<h2 class="location">{{town}}, {{country}}</h2>
 <div class="container">
     <div class="current">
         <div class="header">
             <h2>CURRENT WEATHER</h2>
         </div>
         <div class="inline">
-            <img src="../../assets/icons/{{town.WeatherIcon}}-s.png">
+            <img src="../../assets/icons/{{current.WeatherIcon}}-s.png">
             <div>
-                <p class="degrees">{{town.Temperature.Metric.Value}}° C</p>
-                <p class="info">{{town.WeatherText}}</p>
+                <p class="degrees">{{current.Temperature.Metric.Value}}° C</p>
+                <p class="info">{{current.WeatherText}}</p>
             </div>
         </div>
-        <div class="today">{{town.LocalObservationDateTime | date:'fullDate' }}</div>
+        <div class="today">{{current.LocalObservationDateTime | date:'fullDate' }}</div>
     </div>
     <div class="forecast">
         <div class="header">
