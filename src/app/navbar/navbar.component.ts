@@ -10,7 +10,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   ],
   template: `
     <header>
-      <a routerLink='home'>Home</a>
+      <a routerLink=''>Home</a>
       <a routerLink='favourites'>Favoutires</a>
     </header>
   `,

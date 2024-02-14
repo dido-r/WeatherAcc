@@ -1,0 +1,30 @@
+.container{
+    min-height: calc(100vh - 100px);
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1{
+    font-size: 8rem;
+    color: grey;
+    line-height: 0;
+}
+
+h2{
+    font-size: 4rem;
+    color: grey;;
+}
+
+a{
+    color: rgb(30, 149, 193);
+}
+
+a:hover{
+    cursor: pointer;
+    color: rgb(0, 22, 146);
+    text-decoration: underline;
+    transition: 0.7s;
+}
