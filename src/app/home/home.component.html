@@ -1,37 +1,45 @@
 <div class="banner">
     <form class="search-form" (submit)="onSubmit($event, location)">
-        <input type="text" placeholder="Enter a city" #location>
+        <input type="text" placeholder="Enter a city" required #location>
         <button type="submit">Search</button>
     </form>
 </div>
-<h2 class="location">{{town}}, {{country}}</h2>
+<app-modal *ngIf="!isInputLatin" (close)="onClose()"></app-modal>
+<h2 *ngIf="isLocationFound" class="location">{{town}}, {{country}}</h2>
 <div class="container">
-    <div class="current" *ngIf="isCurrentLoaded">
-        <div class="header">
-            <h2>CURRENT WEATHER</h2>
-        </div>
-        <div class="inline">
-            <img src="../../assets/icons/{{current.WeatherIcon}}-s.png">
-            <div>
-                <p class="degrees">{{current.Temperature.Metric.Value}}° C</p>
-                <p class="info">{{current.WeatherText}}</p>
-            </div>
-        </div>
-        <div class="today">{{current.LocalObservationDateTime | date:'fullDate' }}</div>
+    <div *ngIf="!isLocationFound">
+        <h3>No location found.</h3>
     </div>
-    <div class="forecast" *ngIf="isForecastLoaded">
-        <div class="header">
-            <h2>5-DAY FORECAST</h2>
+    <div class="content" *ngIf="isLocationFound">
+        <div class="current" *ngIf="isCurrentLoaded">
+            <div class="header">
+                <h2>CURRENT WEATHER</h2>
+            </div>
+            <div class="inline">
+                <img src="../../assets/icons/{{current.WeatherIcon}}-s.png">
+                <div>
+                    <p class="degrees">{{current.Temperature.Metric.Value}}° C</p>
+                    <p class="info">{{current.WeatherText}}</p>
+                </div>
+            </div>
+            <div class="today">{{current.LocalObservationDateTime | date:'fullDate' }}</div>
         </div>
-        <div class="single-day" [class.right-border]="i !== (forecast.DailyForecasts.length - 1)" *ngFor="let item of forecast.DailyForecasts; index as i">
-            <p>{{item.Date| date }}</p>
-            <div>
-                <img src="../../assets/icons/{{item.Day.Icon}}-s.png">
+        <div class="forecast" *ngIf="isForecastLoaded">
+            <div class="header">
+                <h2>5-DAY FORECAST</h2>
             </div>
-            <div>
-                <span class="low">{{item.Temperature.Minimum.Value}}</span><span> | </span><span class="high">{{item.Temperature.Maximum.Value}}</span><span>°C</span>
+            <div class="single-day" [class.right-border]="i !== (forecast.DailyForecasts.length - 1)"
+                *ngFor="let item of forecast.DailyForecasts; index as i">
+                <p>{{item.Date| date }}</p>
+                <div>
+                    <img src="../../assets/icons/{{item.Day.Icon}}-s.png">
+                </div>
+                <div>
+                    <span class="low">{{item.Temperature.Minimum.Value}}</span><span> | </span><span
+                        class="high">{{item.Temperature.Maximum.Value}}</span><span>°C</span>
+                </div>
+                <p>{{item.Day.IconPhrase}}</p>
             </div>
-            <p>{{item.Day.IconPhrase}}</p>
-        </div>        
+        </div>
     </div>
 </div>

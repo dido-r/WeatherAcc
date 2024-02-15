@@ -1,12 +1,16 @@
 .container{
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    min-height: calc(100vh - 380px);
 }
 
 .container,
 .location{
     margin: 2% 0 0 2%;
+}
+
+.content{
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .current, 
@@ -27,7 +31,7 @@
     text-align: center;
 }
 
-h2, p, span {
+h2, h3, p, span {
     color: #1c1151;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
