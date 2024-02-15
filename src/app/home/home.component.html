@@ -6,7 +6,7 @@
 </div>
 <h2 class="location">{{town}}, {{country}}</h2>
 <div class="container">
-    <div class="current">
+    <div class="current" *ngIf="isCurrentLoaded">
         <div class="header">
             <h2>CURRENT WEATHER</h2>
         </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="today">{{current.LocalObservationDateTime | date:'fullDate' }}</div>
     </div>
-    <div class="forecast">
+    <div class="forecast" *ngIf="isForecastLoaded">
         <div class="header">
             <h2>5-DAY FORECAST</h2>
         </div>
