@@ -13,10 +13,8 @@
     padding: 10px 10px 30px 10px;
     background: radial-gradient(circle, rgb(223, 224, 249) 0%, rgb(155, 198, 235) 66%, rgb(166, 190, 254) 100%);
     border-radius: 10px;
-}
-
-.current{
-    width: 260px;
+    text-align: center;
+    width: fit-content;
     height: auto;
 }
 
@@ -45,17 +43,6 @@ h2{
 .degrees{
     font-weight: bold;
     font-size: 40px;
-}
-
-img{
-    width: 100px;
-    height: auto;
-}
-
-.inline{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .today{

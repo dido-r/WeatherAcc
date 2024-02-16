@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'app-modal',
@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     template: `
     <div class='modal-background'>
             <div class='modal-content'>
-                <p>Searching should be done in English letters only!</p>
+               <p>{{modalText}}</p>
                <button (click)="close.emit()">OK</button>
             </div>
         </div>
@@ -16,5 +16,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ModalComponent {
 
+    @Input() modalText = '';
     @Output() close = new EventEmitter();
 }

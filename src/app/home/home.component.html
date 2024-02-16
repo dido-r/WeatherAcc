@@ -4,8 +4,14 @@
         <button type="submit">Search</button>
     </form>
 </div>
-<app-modal *ngIf="!isInputLatin" (close)="onClose()"></app-modal>
-<h2 *ngIf="isLocationFound" class="location">{{town}}, {{country}}</h2>
+<app-modal *ngIf="isModalActive" (close)="onCloseModal()" [modalText]="currentModalText"></app-modal>
+<div class="favourite-button">
+    <h2 *ngIf="isLocationFound">{{town}}, {{country}}</h2>
+    <div>
+        <button *ngIf="!isFavouriteLocation" (click)="onAdd()">Add to Favourite</button>
+        <button *ngIf="isFavouriteLocation" (click)="onRemove()">Remove from Favourite</button>
+    </div>
+</div>
 <div class="container">
     <div *ngIf="!isLocationFound">
         <h3>No location found.</h3>

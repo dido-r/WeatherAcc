@@ -13,7 +13,7 @@ interface MainInfo {
 interface Day {
     Icon: number,
     IconPhrase: string,
-    HasPrecipitation: true,
+    HasPrecipitation: boolean,
     PrecipitationType: string,
     PrecipitationIntensity: string
 }
