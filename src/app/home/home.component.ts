@@ -26,30 +26,25 @@ export class HomeComponent {
         private serviceLocation: LocationService
     ) {
         this.serviceLocation.currentLocation.subscribe(x => {
-            this.currentLocation.townName = x.townName;
-            this.currentLocation.countryName = x.countryName;
-            this.currentLocation.id = x.id
-        });
 
-        serviceRequest.getCurrentCondition(this.currentLocation.id).then(x => {
-            this.current = x[0];
-            this.isCurrentLoaded = true
-        });
-
-        serviceRequest.getFiveDayForecast(this.currentLocation.id).then(x => {
-            this.forecast = x;
-            this.isForecastLoaded = true
-        });
-
-        this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.currentLocation.id)
+            if (x.id !== undefined) {
+                
+                this.currentLocation.townName = x.townName;
+                this.currentLocation.countryName = x.countryName;
+                this.currentLocation.id = x.id;
+                this.serviceRequest.getCurrentCondition(this.currentLocation.id)
+                    .then(x => this.current = x[0]);
+                this.serviceRequest.getFiveDayForecast(this.currentLocation.id)
+                    .then(x => this.forecast = x);
+                this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.currentLocation.id);
+            }
+        })
     }
 
-    current = {} as CurrentWeather;
-    forecast = {} as Forecast;
+    current: CurrentWeather | undefined;
+    forecast: Forecast | undefined;
     currentLocation = {} as FavouriteLocation;
     isFavouriteLocation: FavouriteLocation | undefined;
-    isCurrentLoaded = false;
-    isForecastLoaded = false;
     isLocationFound = true;
     isModalActive = false;
     currentModalText = '';
@@ -61,7 +56,7 @@ export class HomeComponent {
     }
 
     onAdd() {
-               
+
         this.serviceFavourite.addToFavourite(this.currentLocation);
         this.isFavouriteLocation = undefined;
         this.currentModalText = "This location was added to Favourites";

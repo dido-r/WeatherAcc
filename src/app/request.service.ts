@@ -24,14 +24,21 @@ export class RequestService {
     async getCurrentCondition(locationKey: string) {
 
         await this.getApiKey();
-        return await fetch(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${this.apiKey}`)
+        return fetch(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${this.apiKey}`)
             .then(x => x.json());
     }
 
     async getFiveDayForecast(locationKey: string) {
         
         await this.getApiKey();
-        return await fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${this.apiKey}&metric=true`)
+        return fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${this.apiKey}&metric=true`)
+            .then(x => x.json());
+    }
+
+    async getCoordinates(lat: number, lon: number) {
+        
+        await this.getApiKey();
+        return fetch(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${lat.toString()},${lon.toString()}&apikey=${this.apiKey}`)
             .then(x => x.json());
     }
 }

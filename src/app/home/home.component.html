@@ -17,7 +17,7 @@
         <h3>No location found.</h3>
     </div>
     <div class="content" *ngIf="isLocationFound">
-        <div class="current" *ngIf="isCurrentLoaded">
+        <div class="current" *ngIf="current !== undefined">
             <div class="header">
                 <h2>CURRENT WEATHER</h2>
             </div>
@@ -30,7 +30,7 @@
             </div>
             <div class="today">{{current.LocalObservationDateTime | date:'fullDate' }}</div>
         </div>
-        <div class="forecast" *ngIf="isForecastLoaded">
+        <div class="forecast" *ngIf="forecast !== undefined">
             <div class="header">
                 <h2>5-DAY FORECAST</h2>
             </div>
