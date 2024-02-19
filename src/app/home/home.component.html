@@ -6,7 +6,7 @@
 </div>
 <app-modal *ngIf="isModalActive" (close)="onCloseModal()" [modalText]="currentModalText"></app-modal>
 <div class="favourite-button">
-    <h2 *ngIf="isLocationFound">{{town}}, {{country}}</h2>
+    <h2 *ngIf="isLocationFound">{{currentLocation.townName}}, {{currentLocation.countryName}}</h2>
     <div>
         <button *ngIf="!isFavouriteLocation" (click)="onAdd()">Add to Favourite</button>
         <button *ngIf="isFavouriteLocation" (click)="onRemove()">Remove from Favourite</button>

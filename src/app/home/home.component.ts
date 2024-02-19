@@ -6,6 +6,7 @@ import { Forecast } from '../forecast';
 import { ModalComponent } from '../modal/modal.component';
 import { FavouriteLocation } from '../favourite-location';
 import { FavouritesService } from '../favourites.service';
+import { LocationService } from '../location.service';
 
 @Component({
     selector: 'app-home',
@@ -21,27 +22,31 @@ export class HomeComponent {
 
     constructor(
         private serviceRequest: RequestService,
-        private serviceFavourite: FavouritesService
+        private serviceFavourite: FavouritesService,
+        private serviceLocation: LocationService
     ) {
-        serviceRequest.getCurrentCondition(this.key).then(x => {
+        this.serviceLocation.currentLocation.subscribe(x => {
+            this.currentLocation.townName = x.townName;
+            this.currentLocation.countryName = x.countryName;
+            this.currentLocation.id = x.id
+        });
+
+        serviceRequest.getCurrentCondition(this.currentLocation.id).then(x => {
             this.current = x[0];
             this.isCurrentLoaded = true
         });
 
-        serviceRequest.getFiveDayForecast(this.key).then(x => {
+        serviceRequest.getFiveDayForecast(this.currentLocation.id).then(x => {
             this.forecast = x;
             this.isForecastLoaded = true
         });
 
-        this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.key)
+        this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.currentLocation.id)
     }
 
-    town = 'Sofia';
-    country = 'Bulgaria';
-    key = '51097';
     current = {} as CurrentWeather;
     forecast = {} as Forecast;
-    favouriteLocation = {} as FavouriteLocation;
+    currentLocation = {} as FavouriteLocation;
     isFavouriteLocation: FavouriteLocation | undefined;
     isCurrentLoaded = false;
     isForecastLoaded = false;
@@ -56,14 +61,8 @@ export class HomeComponent {
     }
 
     onAdd() {
-        
-        this.favouriteLocation = {
-            id: this.key,
-            townName: this.town,
-            countryName: this.country
-        };
-        
-        this.serviceFavourite.addToFavourite(this.favouriteLocation);
+               
+        this.serviceFavourite.addToFavourite(this.currentLocation);
         this.isFavouriteLocation = undefined;
         this.currentModalText = "This location was added to Favourites";
         this.isModalActive = true;
@@ -71,7 +70,7 @@ export class HomeComponent {
 
     onRemove() {
 
-        this.serviceFavourite.removeFromFavourite(this.key);
+        this.serviceFavourite.removeFromFavourite(this.currentLocation.id);
         this.isFavouriteLocation = undefined;
         this.currentModalText = "This location was removed from Favourites";
         this.isModalActive = true;
@@ -101,12 +100,12 @@ export class HomeComponent {
             this.isLocationFound = true;
         }
 
-        this.key = keyResponse[0].Key;
-        this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.key);
-        let currentResponse = await this.serviceRequest.getCurrentCondition(this.key);
-        let fiveDayResponse = await this.serviceRequest.getFiveDayForecast(this.key);
-        this.town = keyResponse[0].LocalizedName;
-        this.country = keyResponse[0].Country.LocalizedName;
+        this.currentLocation.id = keyResponse[0].Key;
+        this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.currentLocation.id);
+        let currentResponse = await this.serviceRequest.getCurrentCondition(this.currentLocation.id);
+        let fiveDayResponse = await this.serviceRequest.getFiveDayForecast(this.currentLocation.id);
+        this.currentLocation.townName = keyResponse[0].LocalizedName;
+        this.currentLocation.countryName = keyResponse[0].Country.LocalizedName;
         this.current = currentResponse[0];
         this.forecast = fiveDayResponse;
         location.value = '';
