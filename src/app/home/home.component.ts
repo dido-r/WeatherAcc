@@ -28,7 +28,7 @@ export class HomeComponent {
         this.serviceLocation.currentLocation.subscribe(x => {
 
             if (x.id !== undefined) {
-                
+
                 this.currentLocation.townName = x.townName;
                 this.currentLocation.countryName = x.countryName;
                 this.currentLocation.id = x.id;
@@ -75,7 +75,7 @@ export class HomeComponent {
 
         event.preventDefault();
 
-        if (location.value.match(/^[a-zA-Z ]+/) === null) {
+        if (location.value.match(/^[a-zA-Z -]+/) === null) {
 
             this.currentModalText = 'Searching should be done in English letters only!';
             this.isModalActive = true;

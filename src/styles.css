@@ -1,3 +1,22 @@
-body{
+body {
     margin: 0;
+    background: var(--background-color);
+}
+
+[theme="light"] {
+    --background-color: #ffffff;
+    --h-color: #1c1151;
+    --header-background: linear-gradient(180deg, rgb(68, 52, 159) 0%, rgb(43, 19, 116) 50%, rgb(68, 52, 159) 100%);
+    --card-color: radial-gradient(circle, rgb(223, 224, 249) 0%, rgb(155, 198, 235) 66%, rgb(166, 190, 254) 100%);
+    --button-color: #30217a;
+    --button-color-hover: #5d49c0;
+}
+
+[theme="dark"] {
+    --background-color: #342c2c;
+    --h-color: #ffffff;
+    --header-background: linear-gradient(180deg, rgb(118, 118, 118) 0%, rgb(50, 50, 50) 50%, rgb(118, 118, 118) 100%);
+    --card-color: linear-gradient(180deg, rgb(122, 122, 122) 0%, rgb(155, 156, 171) 40%, rgb(122, 122, 122) 100%);
+    --button-color: #808080;
+    --button-color-hover: #b6b4bf;
 }

@@ -17,7 +17,7 @@ export class RequestService {
     async getLocationData(location: string){
         
         await this.getApiKey();
-        return await fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.apiKey}&q=${location}`)
+        return fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${this.apiKey}&q=${location}`)
             .then(x => x.json());
     }
 

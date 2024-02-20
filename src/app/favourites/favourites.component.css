@@ -11,7 +11,7 @@
 
 .current{
     padding: 10px 10px 30px 10px;
-    background: radial-gradient(circle, rgb(223, 224, 249) 0%, rgb(155, 198, 235) 66%, rgb(166, 190, 254) 100%);
+    background: var(--card-color);
     border-radius: 10px;
     text-align: center;
     width: fit-content;
@@ -26,7 +26,7 @@
 }
 
 h2, p, span {
-    color: #1c1151;
+    color: var(--h-color);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -37,7 +37,7 @@ h2{
 
 .info,
 .degrees{
-    color: #1c1151;
+    color: var(--h-color);
     line-height: 0;
 }
 
@@ -49,7 +49,7 @@ h2{
 .today{
     padding-top: 30px;
     text-align: center;
-    color: #1c1151;
+    color: var(--h-color);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
 }

@@ -1,9 +1,9 @@
-header{
-    background: linear-gradient(180deg, rgb(68, 52, 159) 0%, rgb(43, 19, 116) 50%, rgb(68, 52, 159) 100%);
+header {
+    background: var(--header-background);
     padding: 10px;
 }
 
-a{
+a {
     display: inline;
     color: #fff;
     margin-right: 20px;
@@ -12,7 +12,71 @@ a{
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     color: #696774;
     transition: 0.4s;
+}
+
+ul {
+    position: absolute;
+    list-style-type: none;
+    background: var(--header-background);
+    top: 24px;
+    left: 175px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+li {
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    width: 37px;
+    height: 18px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+label:after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 100px;
+    transition: 0.3s;
+}
+
+input:checked+label {
+    background: #5574da;
+}
+
+input:checked+label:after {
+    left:100%;
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 18px;
+}
+
+label,
+p,
+input{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
 }

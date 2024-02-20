@@ -15,7 +15,7 @@
 .current, 
 .forecast{
     padding: 20px 20px 20px 20px;
-    background: radial-gradient(circle, rgb(223, 224, 249) 0%, rgb(155, 198, 235) 66%, rgb(166, 190, 254) 100%);
+    background: var(--card-color);
     border-radius: 10px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 h2, h3, p, span {
-    color: #1c1151;
+    color: var(--h-color);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -48,7 +48,7 @@ h2{
 
 .info,
 .degrees{
-    color: #1c1151;
+    color: var(--h-color);
     line-height: 0;
 }
 
@@ -71,7 +71,7 @@ img{
 .today{
     padding-top: 30px;
     text-align: center;
-    color: #1c1151;
+    color: var(--h-color);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
 }
@@ -112,7 +112,7 @@ input{
 
 button{
     color: #fff;
-    background-color: #30217a;
+    background-color: var(--button-color);
     border: none;
     padding: 10px;
     border-radius: 10px;
@@ -122,7 +122,7 @@ button{
 
 button:hover{
     cursor:pointer;
-    background-color: #5d49c0;
+    background-color: var(--button-color-hover);
     transition: 0.5s;
 }
 
