@@ -28,10 +28,10 @@ export class RequestService {
             .then(x => x.json());
     }
 
-    async getFiveDayForecast(locationKey: string) {
+    async getFiveDayForecast(locationKey: string, metric: boolean) {
         
         await this.getApiKey();
-        return fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${this.apiKey}&metric=true`)
+        return fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${this.apiKey}&metric=${metric}`)
             .then(x => x.json());
     }
 

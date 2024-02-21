@@ -7,6 +7,7 @@ import { ModalComponent } from '../modal/modal.component';
 import { FavouriteLocation } from '../favourite-location';
 import { FavouritesService } from '../favourites.service';
 import { LocationService } from '../location.service';
+import { UnitService } from '../unit.service';
 
 @Component({
     selector: 'app-home',
@@ -23,7 +24,8 @@ export class HomeComponent {
     constructor(
         private serviceRequest: RequestService,
         private serviceFavourite: FavouritesService,
-        private serviceLocation: LocationService
+        private serviceLocation: LocationService,
+        private serviceUnit: UnitService
     ) {
         this.serviceLocation.currentLocation.subscribe(x => {
 
@@ -34,11 +36,21 @@ export class HomeComponent {
                 this.currentLocation.id = x.id;
                 this.serviceRequest.getCurrentCondition(this.currentLocation.id)
                     .then(x => this.current = x[0]);
-                this.serviceRequest.getFiveDayForecast(this.currentLocation.id)
+                this.serviceRequest.getFiveDayForecast(this.currentLocation.id, this.isMetric)
                     .then(x => this.forecast = x);
                 this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.currentLocation.id);
             }
-        })
+        });
+
+        this.serviceUnit.isMetric.subscribe(x => {
+
+            if (this.currentLocation.id !== undefined) {
+                
+                this.isMetric = x.valueOf();
+                this.serviceRequest.getFiveDayForecast(this.currentLocation.id, this.isMetric)
+                    .then(x => this.forecast = x);
+            }
+        });
     }
 
     current: CurrentWeather | undefined;
@@ -47,6 +59,7 @@ export class HomeComponent {
     isFavouriteLocation: FavouriteLocation | undefined;
     isLocationFound = true;
     isModalActive = false;
+    isMetric = this.serviceUnit.unitOnStart === 'true';
     currentModalText = '';
 
     onCloseModal() {
@@ -98,7 +111,7 @@ export class HomeComponent {
         this.currentLocation.id = keyResponse[0].Key;
         this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.currentLocation.id);
         let currentResponse = await this.serviceRequest.getCurrentCondition(this.currentLocation.id);
-        let fiveDayResponse = await this.serviceRequest.getFiveDayForecast(this.currentLocation.id);
+        let fiveDayResponse = await this.serviceRequest.getFiveDayForecast(this.currentLocation.id, this.isMetric);
         this.currentLocation.townName = keyResponse[0].LocalizedName;
         this.currentLocation.countryName = keyResponse[0].Country.LocalizedName;
         this.current = currentResponse[0];

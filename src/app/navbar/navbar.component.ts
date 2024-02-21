@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { UnitService } from '../unit.service';
 
 @Component({
     selector: 'app-navbar',
@@ -21,7 +22,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
             <p>Theme</p>
         </li>
         <li>
-            <input type="checkbox" id="unit" /><label for="unit"></label>
+            <input type="checkbox" [checked]="true" id="unit" (change)="unitChange()"/><label for="unit"></label>
             <p>Unit</p>
         </li>
       </ul>
@@ -30,6 +31,14 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+
+    constructor(
+        private serviceUnit: UnitService
+    ) {}
+
+    preferences = false;
+    isLightTheme = true;
+    isMetric = this.serviceUnit.unitOnStart === 'true';
 
     ngOnInit(){
 
@@ -42,15 +51,12 @@ export class NavbarComponent {
         }
 
         this.isLightTheme = theme === 'true' ? true : false;
-        
+
         document.body.setAttribute(
             'theme',
             this.isLightTheme ? 'light' : 'dark'
         );
     }
-
-    preferences = false;
-    isLightTheme = true;
 
     showPreferences() {
 
@@ -67,7 +73,12 @@ export class NavbarComponent {
         );
 
         localStorage.setItem('isLightTheme', `${this.isLightTheme}`);
-        this.preferences = false;
+    }
+
+    unitChange(){
+
+        this.isMetric = !this.isMetric; 
+        this.serviceUnit.changeUnit();
     }
 
     onRedirect(){

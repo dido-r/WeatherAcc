@@ -24,7 +24,7 @@
             <div class="inline">
                 <img src="../../assets/icons/{{current.WeatherIcon}}-s.png">
                 <div>
-                    <p class="degrees">{{current.Temperature.Metric.Value}}° C</p>
+                    <p class="degrees">{{isMetric ? current.Temperature.Metric.Value : current.Temperature.Imperial.Value}}° {{isMetric ? current.Temperature.Metric.Unit : current.Temperature.Imperial.Unit}}</p>
                     <p class="info">{{current.WeatherText}}</p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <span class="low">{{item.Temperature.Minimum.Value}}</span><span> | </span><span
-                        class="high">{{item.Temperature.Maximum.Value}}</span><span>°C</span>
+                        class="high">{{item.Temperature.Maximum.Value}}</span><span>°{{item.Temperature.Maximum.Unit}}</span>
                 </div>
                 <p>{{item.Day.IconPhrase}}</p>
             </div>

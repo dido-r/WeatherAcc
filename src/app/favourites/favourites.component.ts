@@ -5,6 +5,7 @@ import { FavouriteLocation } from '../favourite-location';
 import { RequestService } from '../request.service';
 import { CommonModule } from '@angular/common';
 import { LocationService } from '../location.service';
+import { UnitService } from '../unit.service';
 
 @Component({
     selector: 'app-favourites',
@@ -18,7 +19,7 @@ import { LocationService } from '../location.service';
             <h2>{{item.townName}}, {{item.countryName}}</h2>
         </div>
         <div>
-            <p class="degrees">{{item.degrees}}° C</p>
+            <p class="degrees">{{isMetric ? item.degreesCel : item.degreesFar}}° {{isMetric ? 'C' : 'F'}}</p>
         </div>
     </div>
     </div>
@@ -28,19 +29,26 @@ import { LocationService } from '../location.service';
 export class FavouritesComponent {
 
     list = [] as FavouriteLocation[];
+    isMetric = true;
 
     constructor(
         private serviceRequest: RequestService,
         private serviceFavourite: FavouritesService,
         private serviceLocation: LocationService,
+        private serviceUnit: UnitService,
         private router: Router
     ) {
-        this.list = serviceFavourite.getFavourites();
+        this.list = this.serviceFavourite.getFavourites();
+
+        this.serviceUnit.isMetric.subscribe(x => this.isMetric = x.valueOf());
 
         for (let item of this.list) {
 
             this.serviceRequest.getCurrentCondition(item.id)
-                .then(x => item.degrees = x[0].Temperature.Metric.Value);
+                .then(x => {
+                    item.degreesCel = x[0].Temperature.Metric.Value;
+                    item.degreesFar = x[0].Temperature.Imperial.Value;
+                });
         }
     }
 

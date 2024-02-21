@@ -2,5 +2,6 @@ export interface FavouriteLocation {
     id: string,
     townName: string,
     countryName: string,
-    degrees?: number    
+    degreesCel?: number,
+    degreesFar?: number    
 }
