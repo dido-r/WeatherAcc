@@ -8,16 +8,33 @@ import { FavouriteLocation } from '../favourite-location';
 import { FavouritesService } from '../favourites.service';
 import { LocationService } from '../location.service';
 import { UnitService } from '../unit.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { SpinnerComponent } from '../spinner/spinner.component';
 
 @Component({
     selector: 'app-home',
     standalone: true,
     imports: [
         CommonModule,
-        ModalComponent
+        ModalComponent,
+        SpinnerComponent
     ],
     templateUrl: './home.component.html',
-    styleUrl: './home.component.css'
+    styleUrl: './home.component.css',
+    animations: [
+        trigger('openClose', [
+
+            state('open', style({
+                opacity: '1',
+            })),
+            state('closed', style({
+                opacity: '0'
+            })),
+            transition('closed => open', [
+                animate('1s')
+            ])
+        ]),
+    ]
 })
 export class HomeComponent {
 
@@ -39,13 +56,14 @@ export class HomeComponent {
                 this.serviceRequest.getFiveDayForecast(this.currentLocation.id, this.isMetric)
                     .then(x => this.forecast = x);
                 this.isFavouriteLocation = this.serviceFavourite.checkInFavourites(this.currentLocation.id);
+                this.isLoaded = true;
             }
         });
 
         this.serviceUnit.isMetric.subscribe(x => {
 
             if (this.currentLocation.id !== undefined) {
-                
+
                 this.isMetric = x.valueOf();
                 this.serviceRequest.getFiveDayForecast(this.currentLocation.id, this.isMetric)
                     .then(x => this.forecast = x);
@@ -57,6 +75,7 @@ export class HomeComponent {
     forecast: Forecast | undefined;
     currentLocation = {} as FavouriteLocation;
     isFavouriteLocation: FavouriteLocation | undefined;
+    isLoaded = false;
     isLocationFound = true;
     isModalActive = false;
     isMetric = this.serviceUnit.unitOnStart === 'true';
@@ -106,6 +125,7 @@ export class HomeComponent {
         } else {
 
             this.isLocationFound = true;
+            this.isLoaded = false;
         }
 
         this.currentLocation.id = keyResponse[0].Key;
@@ -116,6 +136,7 @@ export class HomeComponent {
         this.currentLocation.countryName = keyResponse[0].Country.LocalizedName;
         this.current = currentResponse[0];
         this.forecast = fiveDayResponse;
+        this.isLoaded = true;
         location.value = '';
     }
 }

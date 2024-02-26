@@ -5,14 +5,15 @@
     </form>
 </div>
 <app-modal *ngIf="isModalActive" (close)="onCloseModal()" [modalText]="currentModalText"></app-modal>
-<div class="favourite-button">
-    <h2 *ngIf="isLocationFound">{{currentLocation.townName}}, {{currentLocation.countryName}}</h2>
+<div class="favourite-button" *ngIf="isLocationFound" [@openClose]="isLoaded ? 'open' : 'closed'">
+    <h2>{{currentLocation.townName}}, {{currentLocation.countryName}}</h2>
     <div>
         <button *ngIf="!isFavouriteLocation" (click)="onAdd()">Add to Favourite</button>
         <button *ngIf="isFavouriteLocation" (click)="onRemove()">Remove from Favourite</button>
     </div>
 </div>
-<div class="container">
+<app-spinner *ngIf="!isLoaded"></app-spinner>
+<div class="container" [@openClose]="isLoaded ? 'open' : 'closed'">
     <div *ngIf="!isLocationFound">
         <h3>No location found.</h3>
     </div>

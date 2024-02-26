@@ -22,7 +22,7 @@ import { UnitService } from '../unit.service';
             <p>Theme</p>
         </li>
         <li>
-            <input type="checkbox" [checked]="true" id="unit" (change)="unitChange()"/><label for="unit"></label>
+            <input type="checkbox" [checked]="!isMetric" id="unit" (change)="unitChange()"/><label for="unit"></label>
             <p>Unit</p>
         </li>
       </ul>
