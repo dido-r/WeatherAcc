@@ -24,7 +24,7 @@
 
 button{
     color: #fff;
-    background-color: #30217a;
+    background-color: var(--button-color);
     border: none;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
@@ -34,6 +34,6 @@ button{
 
 button:hover{
     cursor:pointer;
-    background-color: #5d49c0;
+    background-color: var(--button-color-hover);
     transition: 0.5s;
 }

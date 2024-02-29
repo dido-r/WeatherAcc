@@ -5,10 +5,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <div class="spinner-container">
       <div class="loading-spinner">
       </div>
-    </div>
   `,
   styleUrl: './spinner.component.css'
 })
