@@ -15,9 +15,7 @@ import { FooterComponent } from './footer/footer.component';
   template: `
     <app-navbar></app-navbar>
     <router-outlet></router-outlet>
-    <app-footer></app-footer>
-  `,
-  styleUrl: './app.component.css'
+    <app-footer></app-footer>`
 })
 export class AppComponent {
   title = 'weather-app';

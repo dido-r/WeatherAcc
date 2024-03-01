@@ -24,7 +24,7 @@ import { UnitService } from '../unit.service';
     </div>
     </div>
 </div>`,
-    styleUrl: './favourites.component.css'
+    styleUrl: './favourites.component.scss'
 })
 export class FavouritesComponent {
 

@@ -8,7 +8,6 @@ import { FavouriteLocation } from '../favourite-location';
 import { FavouritesService } from '../favourites.service';
 import { LocationService } from '../location.service';
 import { UnitService } from '../unit.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { SpinnerComponent } from '../spinner/spinner.component';
 
 @Component({
@@ -20,21 +19,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
         SpinnerComponent
     ],
     templateUrl: './home.component.html',
-    styleUrl: './home.component.css',
-    animations: [
-        trigger('openClose', [
-
-            state('open', style({
-                opacity: '1',
-            })),
-            state('closed', style({
-                opacity: '0'
-            })),
-            transition('closed => open', [
-                animate('1s')
-            ])
-        ]),
-    ]
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent {
 

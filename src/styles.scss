@@ -1,6 +1,26 @@
-body {
-    margin: 0;
-    background: var(--background-color);
+@mixin header-footer{
+    background: var(--header-background);
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@mixin href{
+    color: #fff;
+    text-decoration: none;
+}
+
+@mixin flex-wrap{
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+@mixin today{
+    padding-top: 30px;
+    text-align: center;
+    color: var(--h-color);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
 }
 
 [theme="light"] {
@@ -19,4 +39,9 @@ body {
     --card-color: linear-gradient(180deg, rgb(122, 122, 122) 0%, rgb(155, 156, 171) 40%, rgb(122, 122, 122) 100%);
     --button-color: #808080;
     --button-color-hover: #b6b4bf;
+}
+
+body {
+    margin: 0;
+    background: var(--background-color);
 }

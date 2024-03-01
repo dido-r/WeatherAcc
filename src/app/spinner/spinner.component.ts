@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       <div class="loading-spinner">
       </div>
   `,
-  styleUrl: './spinner.component.css'
+  styleUrl: './spinner.component.scss'
 })
 export class SpinnerComponent {
 

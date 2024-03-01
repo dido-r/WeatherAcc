@@ -12,7 +12,7 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
             </div>
         </div>
   `,
-    styleUrl: './modal.component.css'
+    styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
 

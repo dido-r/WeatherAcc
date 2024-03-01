@@ -22,7 +22,7 @@
     text-align: center;
 }
 
-button{
+button {
     color: #fff;
     background-color: var(--button-color);
     border: none;
@@ -30,10 +30,10 @@ button{
     border-radius: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     letter-spacing: 2px;
-}
 
-button:hover{
-    cursor:pointer;
-    background-color: var(--button-color-hover);
-    transition: 0.5s;
+    &:hover {
+        cursor: pointer;
+        background-color: var(--button-color-hover);
+        transition: 0.5s;
+    }
 }

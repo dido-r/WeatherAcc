@@ -28,7 +28,7 @@ import { UnitService } from '../unit.service';
       </ul>
     </header>
   `,
-    styleUrl: './navbar.component.css'
+    styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
 

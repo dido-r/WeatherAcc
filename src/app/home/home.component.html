@@ -5,7 +5,7 @@
     </form>
 </div>
 <app-modal *ngIf="isModalActive" (close)="onCloseModal()" [modalText]="currentModalText"></app-modal>
-<div class="favourite-button" *ngIf="isLocationFound" [@openClose]="isLoaded ? 'open' : 'closed'">
+<div class="favourite-button" *ngIf="isLocationFound && isLoaded">
     <h2>{{currentLocation.townName}}, {{currentLocation.countryName}}</h2>
     <div>
         <button *ngIf="!isFavouriteLocation" (click)="onAdd()">Add to Favourite</button>
@@ -13,11 +13,11 @@
     </div>
 </div>
 <app-spinner *ngIf="!isLoaded"></app-spinner>
-<div class="container" [@openClose]="isLoaded ? 'open' : 'closed'">
+<div class="container">
     <div *ngIf="!isLocationFound">
         <h3>No location found.</h3>
     </div>
-    <div class="content" *ngIf="isLocationFound">
+    <div class="content" *ngIf="isLocationFound && isLoaded">
         <div class="current" *ngIf="current !== undefined">
             <div class="header">
                 <h2>CURRENT WEATHER</h2>

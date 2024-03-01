@@ -1,11 +1,11 @@
+@use '../../styles.scss';
+
 .main{
     min-height: calc(100vh - 100px);
 }
 
 .container{
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    @include styles.flex-wrap;
     margin: 2% 0 0 2%;
 }
 
@@ -47,9 +47,5 @@ h2{
 }
 
 .today{
-    padding-top: 30px;
-    text-align: center;
-    color: var(--h-color);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 20px;
+   @include styles.today;
 }

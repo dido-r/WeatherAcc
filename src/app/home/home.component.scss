@@ -1,108 +1,104 @@
-.container{
-    min-height: calc(100vh - 380px);
-}
+@use '../../styles.scss';
 
-.container{
+.container {
+    min-height: calc(100vh - 380px);
     margin: 2% 0 0 2%;
 }
 
-.content{
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.content {
+    @include styles.flex-wrap;
 }
 
-.current, 
-.forecast{
+.current,
+.forecast {
     padding: 20px 20px 20px 20px;
     background: var(--card-color);
     border-radius: 10px;
 }
 
-.current{
+.current {
     width: 300px;
     height: auto;
 }
 
-.header{
+.header {
     margin-bottom: 3rem;
     border-bottom: 1px solid #696774;
     text-align: center;
 }
 
-h2, h3, p, span {
+h2,
+h3,
+p,
+span {
     color: var(--h-color);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.banner{
+.banner {
     background-image: url('https://rerouting.ca/wp-content/uploads/2020/12/5.png');
     height: 250px;
     text-align: center;
 }
 
-h2{
+h2 {
     letter-spacing: 1px;
     line-height: 0;
 }
 
 .info,
-.degrees{
+.degrees {
     color: var(--h-color);
     line-height: 0;
 }
 
-.degrees{
+.degrees {
     font-weight: bold;
     font-size: 40px;
 }
 
-img{
+img {
     width: 140px;
     height: auto;
 }
 
-.inline{
+.inline {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.today{
-    padding-top: 30px;
-    text-align: center;
-    color: var(--h-color);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 20px;
+.today {
+    @include styles.today;
 }
 
-.single-day{
+.single-day {
     display: inline-flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
     row-gap: 15px;
     width: fit-content;
     padding: 10px;
+
+    span {
+        font-size: 20px;
+        font-weight: bold;
+    }
 }
 
-.right-border{
+.right-border {
     border-right: 1px solid #b6b2cc;
 }
 
-.single-day span{
-    font-size: 20px;
-    font-weight:bold;
-}
-
-.low{
+.low {
     color: #5d49c0;
 }
 
-.high{
+.high {
     color: #921919;
 }
 
-input{
+input {
     border: 1px solid #b6b2cc;
     border-radius: 10px;
     padding: 10px;
@@ -110,7 +106,7 @@ input{
     margin-right: 10px;
 }
 
-button{
+button {
     color: #fff;
     background-color: var(--button-color);
     border: none;
@@ -118,20 +114,20 @@ button{
     border-radius: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     letter-spacing: 2px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--button-color-hover);
+        transition: 0.5s;
+    }
 }
 
-button:hover{
-    cursor:pointer;
-    background-color: var(--button-color-hover);
-    transition: 0.5s;
-}
-
-.search-form{
+.search-form {
     position: relative;
     top: 50%;
 }
 
-.favourite-button{
+.favourite-button {
     margin: 2% 0 0 2%;
     display: flex;
     flex-direction: row;

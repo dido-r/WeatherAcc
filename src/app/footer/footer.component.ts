@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   template: `
     <footer>WeatherAcc, 2024</footer>
   `,
-  styleUrl: './footer.component.css'
+  styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
 
