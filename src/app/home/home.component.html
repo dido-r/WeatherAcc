@@ -1,5 +1,5 @@
 <div class="banner">
-    <form class="search-form" (submit)="onSubmit($event, location)">
+    <form (submit)="onSubmit($event, location)">
         <input type="text" placeholder="Enter a city" required #location>
         <button type="submit">Search</button>
     </form>

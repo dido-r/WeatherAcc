@@ -1,51 +1,44 @@
 @use '../../styles.scss';
 
-.main{
+.main {
     min-height: calc(100vh - 100px);
-}
 
-.container{
-    @include styles.flex-wrap;
-    margin: 2% 0 0 2%;
-}
+    .container {
+        @include styles.flex-wrap;
+        margin: 2% 0 0 2%;
+    }
 
-.current{
-    padding: 10px 10px 30px 10px;
-    background: var(--card-color);
-    border-radius: 10px;
-    text-align: center;
-    width: fit-content;
-    height: auto;
-    cursor: pointer;
-}
+    .current {
+        padding: 10px 10px 30px 10px;
+        background: var(--card-color);
+        border-radius: 10px;
+        text-align: center;
+        width: fit-content;
+        height: auto;
+        cursor: pointer;
 
-.header{
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #696774;
-    text-align: center;
-}
+        .header {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #696774;
+            text-align: center;
+        }
 
-h2, p, span {
-    color: var(--h-color);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+        h2,
+        p {
+            color: var(--h-color);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
 
-h2{
-    letter-spacing: 1px;
-    line-height: 0;
-}
+        h2 {
+            letter-spacing: 1px;
+            line-height: 0;
+        }
 
-.info,
-.degrees{
-    color: var(--h-color);
-    line-height: 0;
-}
-
-.degrees{
-    font-weight: bold;
-    font-size: 40px;
-}
-
-.today{
-   @include styles.today;
+        p {
+            color: var(--h-color);
+            line-height: 0;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    }
 }
